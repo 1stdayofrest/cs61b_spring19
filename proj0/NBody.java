@@ -29,7 +29,7 @@ public class NBody  {
 
 	}
 
-	public static void drawset(double r){
+	private static void drawset(double r){
 		StdDraw.setScale(-2 * r,2 * r);
 
 		// StdDraw.clear();
