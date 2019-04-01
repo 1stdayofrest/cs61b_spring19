@@ -36,9 +36,6 @@ public class LinkedListDeque<T> {
                 this.addLast(a);
             }
         }
-
-
-
     }
 
     public void addFirst(T i) {

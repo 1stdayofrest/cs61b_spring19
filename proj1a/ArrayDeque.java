@@ -3,7 +3,7 @@ public class ArrayDeque<T> {
     private int size;
     private int nextFirst;
     private int nextLast;
-
+    private static int FACTOR = 4;
     public ArrayDeque() {
         items = (T[]) new Object[8];
         size = 0;
@@ -27,6 +27,9 @@ public class ArrayDeque<T> {
             nextFirst = nextFirst + items.length;
         }
         size += 1;
+        if (size == items.length) {
+            resize(size*FACTOR);
+        }
 
     }
     public void addLast(T item) {
@@ -36,6 +39,9 @@ public class ArrayDeque<T> {
             nextLast = nextLast - items.length;
         }
         size += 1;
+        if (size == items.length) {
+            resize(size*FACTOR);
+        }
 
     }
     public boolean isEmpty() {
