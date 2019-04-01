@@ -106,9 +106,9 @@ public class ArrayDeque<T> {
         if ((index < 0) || (index > (size - 1))) {
             return null;
         }
-        int curPoint = nextLast - 1;
-        if (curPoint < 0) {
-            curPoint = nextLast + items.length;
+        int curPoint = nextFirst + 1;
+        if (curPoint > items.length) {
+            curPoint = curPoint - items.length;
         }
         int i = 0;
         while (i < index) {
