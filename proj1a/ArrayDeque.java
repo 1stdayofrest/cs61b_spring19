@@ -1,7 +1,4 @@
-import java.sql.Array;
-import java.util.Arrays;
-
-public class ArrayDeque <T> {
+public class ArrayDeque<T> {
     private T[] items;
     private int size;
     private int nextFirst;
@@ -26,7 +23,7 @@ public class ArrayDeque <T> {
     public void addFirst(T item) {
         items[nextFirst] = item;
         nextFirst = nextFirst - 1;
-        if (nextFirst < 0){
+        if (nextFirst < 0) {
             nextFirst = nextFirst + items.length;
         }
         size += 1;
@@ -35,14 +32,14 @@ public class ArrayDeque <T> {
     public void addLast(T item) {
         items[nextLast] = item;
         nextLast = nextLast + 1;
-        if (nextLast >= items.length){
+        if (nextLast >= items.length) {
             nextLast = nextLast - items.length;
         }
         size += 1;
 
     }
     public boolean isEmpty() {
-        if (this.size == 0){
+        if (this.size == 0) {
             return true;
         }
         return false;
@@ -50,29 +47,29 @@ public class ArrayDeque <T> {
     public int size() {
         return size;
     }
-    public void printDeque(){
-        if (size == 0){
+    public void printDeque() {
+        if (size == 0) {
             System.out.println(" ");
             return;
         }
         int curPoint = nextFirst + 1;
-        if (curPoint > items.length){
+        if (curPoint > items.length) {
             curPoint = curPoint - items.length;
         }
 
 
-        while (curPoint != nextLast){
-            System.out.printf( items[curPoint].toString() + " ");
+        while (curPoint != nextLast) {
+            System.out.printf(items[curPoint].toString() + " ");
         }
         System.out.println();
     }
     public T removeFirst() {
-        if (size == 0){
+        if (size == 0) {
             System.out.println(" ");
             return null;
         }
         int curPoint = nextFirst + 1;
-        if (curPoint > items.length){
+        if (curPoint > items.length) {
             curPoint = curPoint - items.length;
         }
         T a = items[curPoint];
@@ -83,7 +80,7 @@ public class ArrayDeque <T> {
 
     }
     public T removeLast() {
-        if (size == 0){
+        if (size == 0) {
             System.out.println(" ");
             return null;
         }
@@ -98,7 +95,7 @@ public class ArrayDeque <T> {
         return a;
     }
     public T get(int index) {
-        if ((index < 0) || (index > (size - 1))){
+        if ((index < 0) || (index > (size - 1))) {
             return null;
         }
         int curPoint = nextLast - 1;
@@ -106,9 +103,9 @@ public class ArrayDeque <T> {
             curPoint = nextLast + items.length;
         }
         int i = 0;
-        while (i < index){
+        while (i < index) {
             curPoint += 1;
-            if (curPoint > items.length){
+            if (curPoint > items.length) {
                 curPoint -= items.length;
             }
             i += 1;
@@ -120,7 +117,7 @@ public class ArrayDeque <T> {
         T[] a = (T[]) new Object[newsize];
         int curp = 0;
         int oldSize = this.size;
-        while (curp < this.size){
+        while (curp < this.size) {
 
             a[curp] = this.get(curp);
             curp += 1;
