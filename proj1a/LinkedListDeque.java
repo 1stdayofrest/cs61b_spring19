@@ -18,12 +18,12 @@ public class LinkedListDeque<T> {
         sentinel.prev = sentinel;
 
     }
-    public LinkedListDeque(T i) {
+/*    public LinkedListDeque(T i) {
         sentinel = new IntNode(null, null, null);
         IntNode a = new IntNode(sentinel, i, sentinel);
         sentinel.prev = a;
         sentinel.next = a;
-    }
+    }*/
     public LinkedListDeque(LinkedListDeque other) {
         this();
         if (other.sentinel.next != other.sentinel) {
@@ -127,7 +127,7 @@ public class LinkedListDeque<T> {
         }
         return curP.item;
     }
-    public T getRecursivehelp(IntNode p, int index) {
+    private T getRecursivehelp(IntNode p, int index) {
         if (index == 0) {
             return p.item;
         }
