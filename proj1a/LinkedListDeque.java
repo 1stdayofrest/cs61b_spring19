@@ -43,27 +43,30 @@ public class LinkedListDeque<T> {
 
     public void addFirst(T i) {
 
-        if (sentinel.next == sentinel) {
+        if (isEmpty()) {
             IntNode a = new IntNode(sentinel, i, sentinel);
             sentinel.prev = a;
             sentinel.next = a;
-        } else {
-            IntNode curFirst = sentinel.next;
-            IntNode b = new IntNode(sentinel, i, curFirst);
-            sentinel.next = b;
-            curFirst.prev = b;
+            return;
         }
+        IntNode curFirst = sentinel.next;
+        IntNode b = new IntNode(sentinel, i, curFirst);
+        sentinel.next = b;
+        curFirst.prev = b;
+        return;
     }
     public void addLast(T i) {
-        if (sentinel.next == sentinel) {
+        if (isEmpty()) {
             IntNode a = new IntNode(sentinel, i, sentinel);
             sentinel.prev = a;
             sentinel.next = a;
+            return;
         }
         IntNode curLast = sentinel.prev;
         IntNode b = new IntNode(curLast, i, sentinel);
         sentinel.prev = b;
         curLast.next = b;
+        return;
     }
     public boolean isEmpty() {
         if (sentinel.next == sentinel) {
