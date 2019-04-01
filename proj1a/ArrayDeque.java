@@ -21,27 +21,29 @@ public class ArrayDeque<T> {
 
     }
     public void addFirst(T item) {
+        if (size == items.length) {
+            resize(size * FACTOR);
+        }
+
         items[nextFirst] = item;
         nextFirst = nextFirst - 1;
         if (nextFirst < 0) {
             nextFirst = nextFirst + items.length;
         }
         size += 1;
-        if (size == items.length) {
-            resize(size*FACTOR);
-        }
 
     }
     public void addLast(T item) {
+        if (size == items.length) {
+            resize(size * FACTOR);
+        }
+
         items[nextLast] = item;
         nextLast = nextLast + 1;
         if (nextLast >= items.length) {
             nextLast = nextLast - items.length;
         }
         size += 1;
-        if (size == items.length) {
-            resize(size*FACTOR);
-        }
 
     }
     public boolean isEmpty() {
