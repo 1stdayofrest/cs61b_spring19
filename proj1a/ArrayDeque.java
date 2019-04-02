@@ -152,7 +152,7 @@ public class ArrayDeque<T> {
 
     }
 
-    public static void main(String[] args) {
+/*    public static void main(String[] args) {
         ArrayDeque<Integer> AD1 = new ArrayDeque<>();
         int i = 0;
         Integer b = AD1.removeFirst();
@@ -170,6 +170,6 @@ public class ArrayDeque<T> {
 
 
         System.out.println(AD1.isEmpty());
-    }
+    }*/
 
 }
