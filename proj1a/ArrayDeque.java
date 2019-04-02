@@ -3,7 +3,7 @@ public class ArrayDeque<T> {
     private int size;
     private int nextFirst;
     private int nextLast;
-    private static int FACTOR = 4;
+    private static int FACTOR = 3;
     public ArrayDeque() {
         items = (T[]) new Object[8];
         size = 0;
@@ -73,7 +73,7 @@ public class ArrayDeque<T> {
     }
     public T removeFirst() {
         if (size == 0) {
-            System.out.println(" ");
+
             return null;
         }
         int curPoint = nextFirst + 1;
@@ -84,13 +84,16 @@ public class ArrayDeque<T> {
         items[curPoint] = null;
         nextFirst = curPoint;
         size -= 1;
+        if (size * FACTOR < items.length) {
+            resize(size * 2);
+        }
 
         return a;
 
     }
     public T removeLast() {
         if (size == 0) {
-            System.out.println(" ");
+
             return null;
         }
         int curPoint = nextLast - 1;
@@ -101,6 +104,9 @@ public class ArrayDeque<T> {
         items[curPoint] = null;
         nextLast = curPoint;
         size -= 1;
+        if (size * FACTOR < items.length) {
+            resize(size * 2);
+        }
 
         return a;
     }
