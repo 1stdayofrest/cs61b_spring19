@@ -3,7 +3,7 @@ public class ArrayDeque<T> {
     private int size;
     private int nextFirst;
     private int nextLast;
-    private static int FACTOR = 4;
+    private static int FACTOR = 2;
     public ArrayDeque() {
         items = (T[]) new Object[8];
         size = 0;
@@ -21,8 +21,8 @@ public class ArrayDeque<T> {
 
     }
     public void addFirst(T item) {
-        if (size == items.length) {
-            resize(size * FACTOR);
+        if (item == null) {
+            throw new NullPointerException();
         }
 
         items[nextFirst] = item;
@@ -31,11 +31,14 @@ public class ArrayDeque<T> {
             nextFirst = nextFirst + items.length;
         }
         size += 1;
-
-    }
-    public void addLast(T item) {
         if (size == items.length) {
             resize(size * FACTOR);
+        }
+    }
+
+    public void addLast(T item) {
+        if (item == null) {
+            throw new NullPointerException();
         }
 
         items[nextLast] = item;
@@ -44,6 +47,9 @@ public class ArrayDeque<T> {
             nextLast = nextLast - items.length;
         }
         size += 1;
+        if (size == items.length) {
+            resize(size * FACTOR);
+        }
 
     }
     public boolean isEmpty() {
@@ -84,8 +90,8 @@ public class ArrayDeque<T> {
         items[curPoint] = null;
         nextFirst = curPoint;
         size -= 1;
-        if (size * FACTOR == items.length && items.length >= 32) {
-            resize(size);
+        if (size * FACTOR == items.length && items.length >= 16 && size > 0) {
+            resize(items.length / 2);
         }
 
         return a;
@@ -104,8 +110,8 @@ public class ArrayDeque<T> {
         items[curPoint] = null;
         nextLast = curPoint;
         size -= 1;
-        if (size * FACTOR == items.length && items.length >= 32) {
-            resize(size);
+        if (size * FACTOR == items.length && items.length >= 16 && size > 0) {
+            resize(items.length / 2);
         }
 
         return a;
@@ -146,9 +152,12 @@ public class ArrayDeque<T> {
 
     }
 
-    /*public static void main(String[] args) {
+    public static void main(String[] args) {
         ArrayDeque<Integer> AD1 = new ArrayDeque<>();
         int i = 0;
+        Integer b = AD1.removeFirst();
+        Integer c = AD1.removeLast();
+
         while (i < 50) {
             AD1.addLast(i);
             i++;
@@ -161,6 +170,6 @@ public class ArrayDeque<T> {
 
 
         System.out.println(AD1.isEmpty());
-    }*/
+    }
 
 }
