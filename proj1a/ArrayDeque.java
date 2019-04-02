@@ -3,7 +3,7 @@ public class ArrayDeque<T> {
     private int size;
     private int nextFirst;
     private int nextLast;
-    private static int FACTOR = 3;
+    private static int FACTOR = 4;
     public ArrayDeque() {
         items = (T[]) new Object[8];
         size = 0;
@@ -84,8 +84,8 @@ public class ArrayDeque<T> {
         items[curPoint] = null;
         nextFirst = curPoint;
         size -= 1;
-        if (size * FACTOR < items.length) {
-            resize(size * 2);
+        if (size * FACTOR == items.length && items.length >= 32) {
+            resize(size);
         }
 
         return a;
@@ -104,8 +104,8 @@ public class ArrayDeque<T> {
         items[curPoint] = null;
         nextLast = curPoint;
         size -= 1;
-        if (size * FACTOR < items.length) {
-            resize(size * 2);
+        if (size * FACTOR == items.length && items.length >= 32) {
+            resize(size);
         }
 
         return a;
@@ -135,23 +135,32 @@ public class ArrayDeque<T> {
         }
         items = a;
         nextFirst = newsize - 1;
+        if (nextFirst < 0){
+            nextFirst += items.length;
+        }
         nextLast = oldSize;
+        if (nextLast >= items.length){
+            nextLast -= items.length;
+        }
         size = oldSize;
 
     }
 
     /*public static void main(String[] args) {
         ArrayDeque<Integer> AD1 = new ArrayDeque<>();
-        *//*int i = 0;
-        while (i < 15){
+        int i = 0;
+        while (i < 50) {
             AD1.addLast(i);
             i++;
-        }*//*
+        }
+        while (i > 0) {
+            Integer a = AD1.removeFirst();
+            i--;
+        }
         AD1.addLast(1);
-        Integer a = AD1.removeFirst();
+
 
         System.out.println(AD1.isEmpty());
-    }
-*/
+    }*/
 
 }
