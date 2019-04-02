@@ -104,7 +104,7 @@ public class ArrayDeque<T> {
         }
         int curPoint = nextLast - 1;
         if (curPoint < 0) {
-            curPoint = nextLast + items.length;
+            curPoint += items.length;
         }
         T a = items[curPoint];
         items[curPoint] = null;
