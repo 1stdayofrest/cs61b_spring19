@@ -61,7 +61,7 @@ public class ArrayDeque<T> {
             return;
         }
         int curPoint = nextFirst + 1;
-        if (curPoint > items.length) {
+        if (curPoint >= items.length) {
             curPoint = curPoint - items.length;
         }
 
@@ -77,7 +77,7 @@ public class ArrayDeque<T> {
             return null;
         }
         int curPoint = nextFirst + 1;
-        if (curPoint > items.length) {
+        if (curPoint >= items.length) {
             curPoint = curPoint - items.length;
         }
         T a = items[curPoint];
@@ -132,18 +132,17 @@ public class ArrayDeque<T> {
 
     }
 
-/*
     public static void main(String[] args) {
         ArrayDeque<Integer> AD1 = new ArrayDeque<>();
         int i = 0;
-        while (i < 50){
-            AD1.addFirst(i);
+        while (i < 15){
+            AD1.addLast(i);
             i++;
         }
+        Integer a = AD1.removeFirst();
 
         System.out.println(AD1.get(0));
     }
-*/
 
 
 }
