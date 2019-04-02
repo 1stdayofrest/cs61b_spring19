@@ -100,6 +100,7 @@ public class ArrayDeque<T> {
         T a = items[curPoint];
         items[curPoint] = null;
         nextLast = curPoint;
+        size -= 1;
 
         return a;
     }
@@ -133,18 +134,18 @@ public class ArrayDeque<T> {
 
     }
 
-    public static void main(String[] args) {
+    /*public static void main(String[] args) {
         ArrayDeque<Integer> AD1 = new ArrayDeque<>();
-        /*int i = 0;
+        *//*int i = 0;
         while (i < 15){
             AD1.addLast(i);
             i++;
-        }*/
+        }*//*
         AD1.addLast(1);
         Integer a = AD1.removeFirst();
 
         System.out.println(AD1.isEmpty());
     }
-
+*/
 
 }
