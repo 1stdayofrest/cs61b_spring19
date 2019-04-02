@@ -135,11 +135,11 @@ public class ArrayDeque<T> {
         }
         items = a;
         nextFirst = newsize - 1;
-        if (nextFirst < 0){
+        if (nextFirst < 0) {
             nextFirst += items.length;
         }
         nextLast = oldSize;
-        if (nextLast >= items.length){
+        if (nextLast >= items.length) {
             nextLast -= items.length;
         }
         size = oldSize;
