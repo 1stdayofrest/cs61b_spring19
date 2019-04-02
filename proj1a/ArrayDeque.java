@@ -3,7 +3,7 @@ public class ArrayDeque<T> {
     private int size;
     private int nextFirst;
     private int nextLast;
-    private static int FACTOR = 2;
+    private static int FACTOR = 4;
     public ArrayDeque() {
         items = (T[]) new Object[8];
         size = 0;
@@ -163,7 +163,7 @@ public class ArrayDeque<T> {
             i++;
         }
         while (i > 0) {
-            Integer a = AD1.removeFirst();
+            Integer a = AD1.removeLast();
             i--;
         }
         AD1.addLast(1);
